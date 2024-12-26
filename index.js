@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from "cors";
 import pkg from 'body-parser';
-import { GITHUB_TOKEN, GITHUB_USER_NAME, SOURCE_MGMT_CLIENT_ID, SOURCE_MGMT_CLIENT_SECRET } from './repo-config.js';
+import { GITHUB_TOKEN, SOURCE_MGMT_CLIENT_ID, SOURCE_MGMT_CLIENT_SECRET } from './repo-config.js';
 import axios from 'axios';
 
 
@@ -15,11 +15,12 @@ app.use(json());
 app.use(cors());
 
 app.get("/api/repos", (req, res) => {
+    const { user, token } = req.query;
     axios({
         method: "get",
-        url: `https://api.github.com/users/${GITHUB_USER_NAME}/repos`,
+        url: `https://api.github.com/users/${user}/repos`,
         headers: {
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
+            Authorization: `${token}`,
             "Content-Type": "application/json",
             "Accept": "application/vnd.github.mercy-preview+json" // MUST ADD TO INCLUDE TOPICS
         }
@@ -30,7 +31,7 @@ app.get("/api/repos", (req, res) => {
     });
 });
 app.get("/oauth/redirect", (req, res) => {
-    const { code } = req.query;
+    const { code, user } = req.query;
     console.log('Jay Code', code)
     axios({
         method: "get",
