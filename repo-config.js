@@ -1,0 +1,4 @@
+export const GITHUB_TOKEN = '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';
+export const GITHUB_USER_NAME = 'jaypeevns';
+export const SOURCE_MGMT_CLIENT_ID = 'Ov23li5Jw5KcbfCU0rXB';
+export const SOURCE_MGMT_CLIENT_SECRET = '66b7d1d562fc6f324068f2bfbbdd7674a1496ea5';
