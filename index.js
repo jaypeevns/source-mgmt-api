@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from "cors";
 import pkg from 'body-parser';
-import { GITHUB_TOKEN, SOURCE_MGMT_CLIENT_ID, SOURCE_MGMT_CLIENT_SECRET } from './repo-config.js';
+import { SOURCE_MGMT_CLIENT_ID, SOURCE_MGMT_CLIENT_SECRET } from './repo-config.js';
 import axios from 'axios';
 
 
